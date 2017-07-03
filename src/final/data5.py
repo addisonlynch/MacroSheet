@@ -6,6 +6,7 @@ import sys
 import pandas as pd
 import datetime
 
+import json
 
 import pandas_datareader.data as web
 from pandas_datareader.data import Options
@@ -87,8 +88,7 @@ class wbook(object):
 		self.m_nsheets = len(self.m_sheets)
 		print_x('sheets: ' +str(self.m_nsheets))
 		self.filename = filename
-
-
+		self.masterList = masterList
 
 		self.book = load_workbook(filename)
 		self.writer = pd.ExcelWriter(filename, engine='openpyxl')
@@ -169,6 +169,12 @@ class bot(object):
 	def dailyUpdate(self):
 		self.updateSheets()
 		self.updateExcel()
+		self.jsonDump()
+
+	def jsonDump(self):
+		with open('result.json', 'w') as fp:
+			json.dump(self.wb.masterList, fp)
+
 
 
 	def fredDownload(self, keyList=[]):
