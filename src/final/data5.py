@@ -89,18 +89,10 @@ class wbook(object):
 		print_x('sheets: ' +str(self.m_nsheets))
 		self.filename = filename
 		self.masterList = masterList
-
 		self.book = load_workbook(filename)
 		self.writer = pd.ExcelWriter(filename, engine='openpyxl')
 		self.writer.book = self.book
 		self.writer.sheets = dict((ws.title,ws) for ws in self.book.worksheets)
-
-
-	def update(self):
-
-		for sheet in m_sheets:
-			sheet.update()
-
 
 
 class sheet(object):
@@ -117,9 +109,7 @@ class sheet(object):
 		self.m_ncomponents = len(self.m_components)
 		self.m_name = name 
 		self.dframes=[]
-		self.m_updated_components = []
 		print_x('sheet ' + str(self.m_name) + ' components: ' +str(self.m_ncomponents))
-
 
 
 
@@ -191,11 +181,6 @@ class bot(object):
 		print(sorted)
 		return(sorted)
 
-
-	def addTitles(self, keyList=[]):
-		dicts = {}
-
-
 	def dataReader(self, service, ticker):
 		start = datetime.datetime(2017,1,1)
 		end = datetime.datetime(2017,1,27)
@@ -212,8 +197,7 @@ class bot(object):
 		for sheet in self.wb.m_sheets:
 			for component in sheet.m_components:
 				self.excel_write_exist(component)
-
-		pass
+		return
 
 	def updateSheets(self):
 
@@ -221,6 +205,7 @@ class bot(object):
 			self.updateComponents(sheet)
 			#arr.append({'name' : sheet.m_name, 'vals' : self.runComponents(sheet), 'offset' : total })
 			#i = i+
+		return
 
 
 	def updateComponents(self, sheet):
@@ -277,50 +262,3 @@ if __name__ == "__main__":
 
 
 
-
-
-
-	#bot1= bot()
-	#bot1.indicies()
-#	dps = dict_to_datapoints(sIndex_large)
-	#comp = component(dps)
-
-	#nm = 'SP500'
-	#dp = datapoint('SP500', 'fred')
-	#print(dp.title)
-
-	#df = bot1.largeCap()
-	#filename='pandastry.xlsx'
-	#bot1.excel_write_exist(filename,df,22,4)
-	#input('\n\n\nPress enter to begin...')
-	#bot1.indicies()
-	#print("\n\n\noperation complete.")
-
-
-'''
-	filename = 'filled.xlsx'
-	wb = openpyxl.load_workbook(filename)
-	ws = wb.worksheets[0]
-	ws.insert_rows(2, 4)
-	wb.save(filename)
-
-
-
-	amzn = web.get_quote_yahoo('AMZN')
-	print(amzn['last'])
-	
-	print(gdp)
-	book = load_workbook('pandastry.xlsx')
-	writer = pd.ExcelWriter('pandastry.xlsx', engine='openpyxl')
-	writer.book = book
-	writer.sheets = dict((ws.title,ws) for ws in book.worksheets)
-
-	gdp.to_excel(writer, index=False, header=False, sheet_name='Sheet1', startrow=22, startcol=4)
-
-	writer.save()
-
-	
-	aapl = Options('aapl', 'yahoo')
-	data = aapl.get_all_data()
-	print(data.iloc[0:5, 0:5])
-	'''
