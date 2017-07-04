@@ -172,7 +172,7 @@ class bot(object):
 		self.jsonDump()
 
 	def jsonDump(self):
-		with open('result.json', 'w') as fp:
+		with open('result2.json', 'w') as fp:
 			json.dump(self.wb.masterList, fp)
 
 
