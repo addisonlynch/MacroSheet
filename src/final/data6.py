@@ -44,16 +44,16 @@ sIndex_small = [{'ticker': 'WILLSMLCAP', 'source':'fred'}]
 
 stock_indicies = [{'name' : 'large_cap', 'arr' : sIndex_large, },{'name' : 'mid_cap', 'arr' :sIndex_mid}, {'name' :'small_cap', 'arr' : sIndex_small}]
 
-sSector_cdis = [{'ticker': 'XLY', 'source':'yhoo'}]
-sSector_stap = [{'ticker': 'XLP', 'source':'yhoo'}]
-sSector_engy = [{'ticker': 'XLE', 'source':'yhoo'}]
-sSector_fina = [{'ticker': 'XLF', 'source':'yhoo'}]
-sSector_heal = [{'ticker': 'XLV', 'source':'yhoo'}]
-sSector_inds = [{'ticker': 'XLI', 'source':'yhoo'}]
-sSector_mats = [{'ticker': 'XLB', 'source':'yhoo'}]
-sSector_real = [{'ticker': 'XLRE', 'source':'yhoo'}]
-sSector_tech = [{'ticker': 'XLK', 'source':'yhoo'}]
-sSector_util = [{'ticker': 'XLU', 'source':'yhoo'}]
+sSector_cdis = [{'ticker': 'XLY', 'source':'yahoo'}]
+sSector_stap = [{'ticker': 'XLP', 'source':'yahoo'}]
+sSector_engy = [{'ticker': 'XLE', 'source':'yahoo'}]
+sSector_fina = [{'ticker': 'XLF', 'source':'yahoo'}]
+sSector_heal = [{'ticker': 'XLV', 'source':'yahoo'}]
+sSector_inds = [{'ticker': 'XLI', 'source':'yahoo'}]
+sSector_mats = [{'ticker': 'XLB', 'source':'yahoo'}]
+sSector_real = [{'ticker': 'XLRE', 'source':'yahoo'}]
+sSector_tech = [{'ticker': 'XLK', 'source':'yahoo'}]
+sSector_util = [{'ticker': 'XLU', 'source':'yahoo'}]
 
 equity_sectors = [{'name' : 'Consumer Discretionary', 'arr' : sSector_cdis, },{'name' : 'Consumer Staples', 'arr' : sSector_stap}, {'name' :'Energy', 'arr' : sSector_engy}, {'name' :'Financials', 'arr' : sSector_fina}, 
 {'name' :'Health Care', 'arr' : sSector_heal}, {'name' :'Industrials', 'arr' : sSector_inds}, {'name' :'Materials', 'arr' : sSector_mats}, {'name' :'Real Estate', 'arr' : sSector_real}, {'name' :'Technology', 'arr' : sSector_tech},
@@ -68,7 +68,7 @@ volatility = [{'ticker': 'WIV', 'source':'fred'}, {'STLFSI': 'fred'}]
 manufacturing = [{'ticker': 'MNFCTRIRSA', 'source':'fred'}, {'MNFCTRSMSA': 'fred'}, {'MNFCTRIMSA':"fred"}]
 housing =[{'ticker': 'ASPUS', 'source':'fred'}, {'MSPNHSUS': 'fred'}, {'MSACSR':"fred"},{ 'MNMFS':'fred'}, {'HSTFCM':"fred"},{ 'HSTFC':'fred'}, {'HSTFFHAI':"fred"},{ 'HSTFVAG':'fred'}, {'CSUSHPINSA':"fred"}]
 
-equity_sectors = [{'ticker': 'SP500', 'source':'fred'}, {'ticker':'DJIA', 'source': 'fred'}, {'ticker':'NASDAQCOM', 'source' :'fred'},{ 'ticker':'NASDAQ100','source':'fred'}]
+#equity_sectors = [{'ticker': 'SP500', 'source':'fred'}, {'ticker':'DJIA', 'source': 'fred'}, {'ticker':'NASDAQCOM', 'source' :'fred'},{ 'ticker':'NASDAQ100','source':'fred'}]
 sheet_list = [{'name' : 'stock_indicies', 'list' : stock_indicies }, {'name' : 'equity_sectors', 'list' : equity_sectors}]
 
 ########################
@@ -118,6 +118,7 @@ class sheet(object):
 		self.m_components = []
 		self.name = name
 		temp = components
+                print("sheet: " + self.name + " components: " + str(len(components)))
 		for componentx in temp:
 			new = component(componentx['name'], componentx['arr'])
 			component.m_sheetName = self.name

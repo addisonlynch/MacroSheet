@@ -10,7 +10,6 @@ import json
 
 import pandas_datareader.data as web
 from pandas_datareader.data import Options
-from yahoo_finance import Share
 from fredapi import Fred
 from openpyxl import load_workbook
 from optparse import OptionParser
