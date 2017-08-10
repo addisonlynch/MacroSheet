@@ -61,8 +61,6 @@ equity_sectors = [{'name' : 'Consumer Discretionary', 'arr' : sSector_cdis, },{'
 
 
 
-
-
 volatility = [{'ticker': 'WIV', 'source':'fred'}, {'STLFSI': 'fred'}]
 
 manufacturing = [{'ticker': 'MNFCTRIRSA', 'source':'fred'}, {'MNFCTRSMSA': 'fred'}, {'MNFCTRIMSA':"fred"}]
